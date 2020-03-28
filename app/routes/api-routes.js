@@ -35,7 +35,10 @@ module.exports = function (app) {
       function (err) {
         if (err) throw err;
         console.log("Your new chirp has been created!")
-      }
+      },
+      connection.query("SELECT * FROM chirps", function (err, data) {
+        res.send(data);
+      })
     );
   });
 
